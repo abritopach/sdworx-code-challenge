@@ -1,20 +1,27 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Coffee Machine App
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content class="ion-padding" [fullscreen]="true">
+  <ion-row>
+    <h1>Select your coffee and personalise it. Then... enjoy!</h1>
+  </ion-row>
+  <ion-row>
+    <ion-col *ngFor="let number of [0,1,2]" size="4">
+      <ion-card>
+        <img alt="Brazilian coffee" src="assets/images/brazilian-coffee.webp" />
+        <ion-card-header>
+          <ion-card-title>Brazilian coffee</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          Brazilian specialty coffee is different from other coffees in the world because of its unique flavor profile. It's known for having floral notes and bright acidity, which means it has a bright, refreshing taste. Brazilian coffee beans are often roasted on a light-medium profile in order to bring out this brightness in flavor. 
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>
