@@ -1,12 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CoffeeService } from '../services/coffee.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
-  constructor() {}
+  coffees: {type: string, description: string, image: string}[] = [];
+
+  constructor(private coffeeService: CoffeeService) {}
+
+  ngOnInit() {
+    this.coffees = this.coffeeService.getCoffeeTypes();
+  }
 
 }

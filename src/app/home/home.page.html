@@ -11,15 +11,15 @@
     <h1>Select your coffee and personalise it. Then... enjoy!</h1>
   </ion-row>
   <ion-row>
-    <ion-col *ngFor="let number of [0,1,2]" size="4">
+    <ion-col *ngFor="let coffee of coffees" size="4">
       <ion-card>
-        <img alt="Brazilian coffee" src="assets/images/brazilian-coffee.webp" />
+        <img style="height: 200px; width: 100%;" alt="Brazilian coffee" [src]="coffee.image" />
         <ion-card-header>
-          <ion-card-title>Brazilian coffee</ion-card-title>
+          <ion-card-title>{{ coffee.type }} coffee</ion-card-title>
         </ion-card-header>
       
         <ion-card-content>
-          Brazilian specialty coffee is different from other coffees in the world because of its unique flavor profile. It's known for having floral notes and bright acidity, which means it has a bright, refreshing taste. Brazilian coffee beans are often roasted on a light-medium profile in order to bring out this brightness in flavor. 
+          {{ coffee.description }} 
         </ion-card-content>
       </ion-card>
     </ion-col>
