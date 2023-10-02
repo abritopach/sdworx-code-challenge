@@ -1,0 +1,7 @@
+{
+  "name": "sdworx-code-challenge",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
