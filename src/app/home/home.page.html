@@ -29,11 +29,20 @@
           <ion-item lines="none">
             <h2>Coffee size</h2>
           </ion-item> 
-          <app-coffee-size></app-coffee-size>
+          <app-coffee-size (coffeSizeEmitter)="coffeSizeEmitter($event)"></app-coffee-size>
           <ion-item lines="none">
             <h2>Toppings / Syrups</h2>
-          </ion-item> 
+          </ion-item>
+          <app-coffee-toppings (coffeToppingsEmitter)="coffeToppingsEmitter($event)"></app-coffee-toppings>
         </ion-card-content>
+
+        <ion-item lines="none">
+          <ion-label>Total: {{ coffee.price + priceCoffeeSize + priceCoffeeToppings }} €</ion-label>
+          <ion-button color="danger" slot="end">
+            <ion-icon slot="start" name="card-outline"></ion-icon>
+            Buy
+          </ion-button>
+        </ion-item>
       </ion-card>
     </ion-col>
   </ion-row>

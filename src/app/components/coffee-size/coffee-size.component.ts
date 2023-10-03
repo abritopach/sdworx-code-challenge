@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CoffeeService } from 'src/app/services/coffee.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { CoffeeService } from 'src/app/services/coffee.service';
 })
 export class CoffeeSizeComponent  implements OnInit {
 
+  @Output() coffeSizeEmitter = new EventEmitter<{size: string, price: number, image: string, isSelected: boolean}>();
   cups: {size: string, price: number, image: string, isSelected: boolean}[] = [];
 
   constructor(private coffeeService: CoffeeService) { }
@@ -21,6 +22,7 @@ export class CoffeeSizeComponent  implements OnInit {
     this.cups.forEach(item => {
       item.size === cup.size ? item.isSelected = true : item.isSelected = false;
     });
+    this.coffeSizeEmitter.emit(cup);
   }
 
 }

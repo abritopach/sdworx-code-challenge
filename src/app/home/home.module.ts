@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { CoffeeSizeComponent } from '../components/coffee-size/coffee-size.component';
+import { CoffeeToppingsComponent } from '../components/coffee-toppings/coffee-toppings.component';
 
 
 @NgModule({
@@ -15,6 +16,6 @@ import { CoffeeSizeComponent } from '../components/coffee-size/coffee-size.compo
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, CoffeeSizeComponent]
+  declarations: [HomePage, CoffeeSizeComponent, CoffeeToppingsComponent]
 })
 export class HomePageModule {}

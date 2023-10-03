@@ -22,4 +22,13 @@ export class CoffeeService {
       {size: 'Large', price: 3.50, image: 'assets/images/coffee-sizes/large.png', isSelected: false},
     ]
   }
+
+  getCoffeeToppings() {
+    return [
+      {name: 'Chantilly', price: 4, count: 0},
+      {name: 'Caramel syrup', price: 2, count: 0},
+      {name: 'Chocolate chips', price: 1, count: 0},
+      {name: 'Vanilla syrup', price: 2, count: 0}
+    ]
+  }
 }
