@@ -1,4 +1,12 @@
+// Angular
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
+/* Project */
+
+// Models | Interfaces
+import { Topping } from 'src/app/models/topping.model';
+
+// Services
 import { CoffeeService } from 'src/app/services/coffee.service';
 
 @Component({
@@ -8,8 +16,8 @@ import { CoffeeService } from 'src/app/services/coffee.service';
 })
 export class CoffeeToppingsComponent  implements OnInit {
 
-  toppings: {name: string, price: number, count: number}[] = [];
-  @Output() coffeToppingsEmitter = new EventEmitter<{name: string, price: number, count: number}[]>();
+  toppings: Topping[] = [];
+  @Output() coffeToppingsEmitter = new EventEmitter<Topping[]>();
 
   constructor(private coffeService: CoffeeService) { }
 
@@ -17,7 +25,7 @@ export class CoffeeToppingsComponent  implements OnInit {
     this.toppings = this.coffeService.getCoffeeToppings();
   }
 
-  onClickAddToppingHandler(topping: {name: string, price: number, count: number}) {
+  onClickAddToppingHandler(topping: Topping) {
     this.toppings.forEach(item => {
       item.name === topping.name ? item.count++ : item.count;
     });

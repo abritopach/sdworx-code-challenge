@@ -1,6 +1,6 @@
 <ion-grid>
   <ion-row class="ion-align-items-center">
-    <ion-col *ngFor="let cup of cups" size="4" (click)="onClickCupSize(cup)"
+    <ion-col *ngFor="let cup of cups" size-lg="4" size-md="4" size-sm="6" size-xs="12" (click)="onClickCupSize(cup)"
     [ngClass]="cup.isSelected ? 'selected_cup_size' : null">
       <ion-item lines="none">
         <ion-chip>

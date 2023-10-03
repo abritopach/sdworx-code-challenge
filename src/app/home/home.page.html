@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Coffee Machine App
+      Coffee Machine App - Code Challenge
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,7 +11,7 @@
     <h1>Select your coffee and personalise it. Then... enjoy!</h1>
   </ion-row>
   <ion-row>
-    <ion-col *ngFor="let coffee of coffees" size="4">
+    <ion-col *ngFor="let coffee of coffees" size-lg="4" size-md="4" size-sm="6" size-xs="12">
       <ion-card>
         <img style="height: 200px; width: 100%;" alt="Brazilian coffee" [src]="coffee.image" />
         <ion-card-header>
@@ -29,16 +29,16 @@
           <ion-item lines="none">
             <h2>Coffee size</h2>
           </ion-item> 
-          <app-coffee-size (coffeSizeEmitter)="coffeSizeEmitter($event)"></app-coffee-size>
+          <app-coffee-size (coffeSizeEmitter)="coffeSizeEmitter($event, coffee)"></app-coffee-size>
           <ion-item lines="none">
             <h2>Toppings / Syrups</h2>
           </ion-item>
-          <app-coffee-toppings (coffeToppingsEmitter)="coffeToppingsEmitter($event)"></app-coffee-toppings>
+          <app-coffee-toppings (coffeToppingsEmitter)="coffeToppingsEmitter($event, coffee)"></app-coffee-toppings>
         </ion-card-content>
 
         <ion-item lines="none">
-          <ion-label>Total: {{ coffee.price + priceCoffeeSize + priceCoffeeToppings }} €</ion-label>
-          <ion-button color="danger" slot="end">
+          <ion-label>Total: {{ coffee.price + coffeeMap.get(coffee.type).priceCoffeeSize + coffeeMap.get(coffee.type).priceCoffeeToppings }} €</ion-label>
+          <ion-button color="secondary" fill="outline" slot="end" (click)="goToPaymentPage(coffee)">
             <ion-icon slot="start" name="card-outline"></ion-icon>
             Buy
           </ion-button>
@@ -47,3 +47,9 @@
     </ion-col>
   </ion-row>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+      <ion-title>© {{ currentYear }} Adrián Brito Pacheco</ion-title>
+  </ion-toolbar>
+</ion-footer>

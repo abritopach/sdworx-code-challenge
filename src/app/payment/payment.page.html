@@ -1,0 +1,77 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Coffee Machine App - Code Challenge</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Order {{ uuid }}</ion-card-title>
+      <ion-card-subtitle>Details</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      You have selected a {{ cup?.size }} cup ( {{ cup?.price }} € ) of {{ coffee?.type }} coffee ( {{ coffee?.price }} € ) with the following toppings / syrups:
+      <ng-container *ngFor="let topping of toppings">
+        <ion-item lines="none" *ngIf="topping.count > 0">
+          {{topping.name}} ( {{ topping.price }} € ) Units: {{ topping.count }}
+        </ion-item>
+      </ng-container>
+    </ion-card-content>
+  
+    <ion-button color="danger" fill="outline" (click)="presentCancelPaymentProcess()">Cancel</ion-button>
+    <ion-button (click)="showPaymentSection = !showPaymentSection">Pay {{ price }} €</ion-button>
+  </ion-card>
+
+  <ng-container *ngIf="showPaymentSection">
+    <ion-item>
+      <h1>Total to be paid: {{ (price - moneyCounter >= 0 ? price - moneyCounter : 0)}} €</h1>
+      <h1 slot="end">Money refund: {{ price - moneyCounter < 0 ? abs(price - moneyCounter) : 0 }} €</h1>
+    </ion-item>
+    <ion-row>
+      <ion-item lines="none">
+        <ion-label>Drag & drop listings. Move the money to the coffee machine slot.</ion-label>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+      <div class="payment-container">
+        <h2>User coins / bills</h2>
+      
+        <div
+          cdkDropList
+          #todoList="cdkDropList"
+          [cdkDropListData]="todo"
+          [cdkDropListConnectedTo]="[doneList]"
+          class="payment-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="payment-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+        </div>
+      </div>
+      </ion-col>
+      
+      <ion-col size="6">
+      <div class="payment-container">
+        <h2>Coffee machine coins / bills slot</h2>
+      
+        <div
+          cdkDropList
+          #doneList="cdkDropList"
+          [cdkDropListData]="done"
+          [cdkDropListConnectedTo]="[todoList]"
+          class="payment-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="payment-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+        </div>
+      </div>
+    </ion-col>
+    </ion-row>
+  </ng-container>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+      <ion-title>© {{ currentYear }} Adrián Brito Pacheco</ion-title>
+  </ion-toolbar>
+</ion-footer>

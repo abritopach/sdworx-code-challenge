@@ -1,7 +1,7 @@
 <ion-card>
   <ion-grid>
     <ion-row class="ion-align-items-center">
-      <ion-col *ngFor="let topping of toppings" size="6">
+      <ion-col *ngFor="let topping of toppings" size="6" size-sm="12" size-xs="12">
         <ion-item lines="none">
           <ion-label class="ion-text-wrap">{{ topping.name }}</ion-label>
           <ion-button slot="end" fill="outline" (click)="onClickAddToppingHandler(topping)">
@@ -17,7 +17,7 @@
       <ng-container *ngFor="let topping of toppings">
         <ion-item *ngIf="topping.count !== 0">
           <ion-thumbnail slot="start">
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+            <img alt="Silhouette of mountains" [src]="topping.image" />
           </ion-thumbnail>
           <ion-label>{{ topping.name }} ( {{ topping.price }} €)</ion-label>
           <ion-label slot="end">Units: {{ topping.count }}</ion-label>
