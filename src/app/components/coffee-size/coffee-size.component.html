@@ -1,0 +1,14 @@
+<ion-grid>
+  <ion-row class="ion-align-items-center">
+    <ion-col *ngFor="let cup of cups" size="4" (click)="onClickCupSize(cup)"
+    [ngClass]="cup.isSelected ? 'selected_cup_size' : null">
+      <ion-item lines="none">
+        <ion-chip>
+          <ion-icon name="cash-outline" color="primary"></ion-icon>
+          <ion-label>{{ cup.price }} €</ion-label>
+        </ion-chip>
+      </ion-item>
+      <ion-img style="height: 100px; width: 100%;" [src]="cup.image"></ion-img>
+    </ion-col>
+  </ion-row>
+</ion-grid>

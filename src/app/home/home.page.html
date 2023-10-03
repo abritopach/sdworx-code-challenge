@@ -15,11 +15,24 @@
       <ion-card>
         <img style="height: 200px; width: 100%;" alt="Brazilian coffee" [src]="coffee.image" />
         <ion-card-header>
-          <ion-card-title>{{ coffee.type }} coffee</ion-card-title>
+          <ion-item lines="none">
+            <label slot="start">{{ coffee.type }} coffee</label>
+            <ion-chip slot="end">
+              <ion-icon name="cash-outline" color="primary"></ion-icon>
+              <ion-label>{{ coffee.price }} €</ion-label>
+            </ion-chip>
+          </ion-item>
         </ion-card-header>
       
         <ion-card-content>
-          {{ coffee.description }} 
+          {{ coffee.description }}
+          <ion-item lines="none">
+            <h2>Coffee size</h2>
+          </ion-item> 
+          <app-coffee-size></app-coffee-size>
+          <ion-item lines="none">
+            <h2>Toppings / Syrups</h2>
+          </ion-item> 
         </ion-card-content>
       </ion-card>
     </ion-col>

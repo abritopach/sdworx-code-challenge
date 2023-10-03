@@ -8,7 +8,7 @@ import { CoffeeService } from '../services/coffee.service';
 })
 export class HomePage implements OnInit {
 
-  coffees: {type: string, description: string, image: string}[] = [];
+  coffees: {type: string, price: number, description: string, image: string}[] = [];
 
   constructor(private coffeeService: CoffeeService) {}
 
